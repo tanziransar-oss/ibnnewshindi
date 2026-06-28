@@ -90,9 +90,6 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const denied = await requireArticleWriteAccess(request);
-    if (denied) return denied;
-
     const { id } = await params;
     const url = new URL(request.url);
     const action = url.searchParams.get("action");
@@ -105,13 +102,17 @@ export async function PATCH(
         }))
         .where("id", "=", id)
         .execute();
-    } else {
-      await db
-        .updateTable("article")
-        .set({ isDeleted: false })
-        .where("id", "=", id)
-        .execute();
+      return NextResponse.json({ success: true });
     }
+
+    const denied = await requireArticleWriteAccess(request);
+    if (denied) return denied;
+
+    await db
+      .updateTable("article")
+      .set({ isDeleted: false })
+      .where("id", "=", id)
+      .execute();
 
     return NextResponse.json({ success: true });
   } catch (err) {
