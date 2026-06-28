@@ -13,7 +13,7 @@ const pool = new Pool({
 });
 
 async function main() {
-  console.log("Connecting to CockroachDB to apply Google Site Verification migration...");
+  console.log("Connecting to Neon DB to apply Google Site Verification migration...");
   const client = await pool.connect();
   try {
     console.log("Adding column 'googleSiteVerification' to table 'site_settings'...");

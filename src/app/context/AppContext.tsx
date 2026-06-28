@@ -474,7 +474,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   }, []);
 
-  // 1. Fetch unified bootstrap collections from CockroachDB backend on mount
+  // 1. Fetch unified bootstrap collections from Neon DB backend on mount
   useEffect(() => {
     async function loadDatabase() {
       try {
@@ -514,7 +514,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           loadMedia();
         }
       } catch (err) {
-        console.error("Failed to connect to CockroachDB bootstrap. Falling back to default mock data.", err);
+        console.error("Failed to connect to Neon DB bootstrap. Falling back to default mock data.", err);
         const parsedArticles = INITIAL_ARTICLES.map((art: any) => ({
           ...art,
           views: Number(art.views) || 0,
@@ -547,7 +547,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
-  // --- ACTIONS WITH LIVE COCKROACHDB SYNC ---
+  // --- ACTIONS WITH LIVE NEON DB SYNC ---
 
   const addArticle = async (newArt: Omit<Article, "id" | "views">) => {
     try {
@@ -803,7 +803,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (res.ok) {
         setUsers(prev => prev.map(u => u.id === id ? { ...u, role } : u));
       } else {
-        console.error("Failed to update user role in CockroachDB");
+        console.error("Failed to update user role in Neon DB");
       }
     } catch (err) {
       console.error("Error updating user role:", err);

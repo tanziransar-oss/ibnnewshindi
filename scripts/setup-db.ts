@@ -12,7 +12,7 @@ const pool = new Pool({
 });
 
 async function main() {
-  console.log("Connecting to CockroachDB and setting up database schemas...");
+  console.log("Connecting to Neon DB and setting up database schemas...");
 
   const client = await pool.connect();
   try {

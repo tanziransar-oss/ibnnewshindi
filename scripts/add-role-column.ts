@@ -13,7 +13,7 @@ const pool = new Pool({
 });
 
 async function main() {
-  console.log("Connecting to CockroachDB to add missing user role column...");
+  console.log("Connecting to Neon DB to add missing user role column...");
   const client = await pool.connect();
   try {
     // Check if table user exists and alter it

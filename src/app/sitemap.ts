@@ -8,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let categoriesList: any[] = [];
 
   try {
-    // Query all published articles from CockroachDB/Neon
+    // Query all published articles from Neon DB
     articlesList = await db
       .selectFrom("article")
       .select(["slug", "publishDate"])

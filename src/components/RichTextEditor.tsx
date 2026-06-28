@@ -421,10 +421,10 @@ export default function RichTextEditor({
       setSelectedMediaItem(uploaded);
       setMediaModalTab("library");
       setMediaSearchQuery("");
-      alert(`"${file.name}" uploaded successfully directly to CockroachDB!`);
+      alert(`"${file.name}" uploaded successfully directly to Neon DB!`);
     } catch (err) {
       console.error(err);
-      alert("Failed to upload image. CockroachDB link might be offline.");
+      alert("Failed to upload image. Neon DB link might be offline.");
     } finally {
       setUploadingImage(false);
     }
@@ -878,7 +878,7 @@ export default function RichTextEditor({
                         <div className="flex flex-col items-center justify-center py-20 text-center text-zinc-400">
                           <span className="text-3xl mb-2">📸</span>
                           <span className="text-3xs font-black uppercase tracking-wider">No matching images found</span>
-                          <p className="text-[10px] text-zinc-400 mt-1">Upload a new image in the next tab to save it directly to CockroachDB!</p>
+                          <p className="text-[10px] text-zinc-400 mt-1">Upload a new image in the next tab to save it directly to Neon DB!</p>
                         </div>
                       ) : (
                         <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4 p-0.5">
@@ -908,7 +908,7 @@ export default function RichTextEditor({
                     </div>
                   </>
                 ) : (
-                  /* Drag & Drop direct CockroachDB file upload center */
+                  /* Drag & Drop direct Neon DB file upload center */
                   <div className="flex-1 flex flex-col items-center justify-center border-2 border-dashed border-zinc-200 rounded-3xl bg-zinc-50/50 p-8 text-center select-none">
                     {uploadingImage ? (
                       <div className="space-y-3">
@@ -919,9 +919,9 @@ export default function RichTextEditor({
                       <div className="space-y-4 max-w-sm">
                         <span className="text-4xl block">☁️</span>
                         <div>
-                          <h4 className="text-xs font-black text-zinc-800">CockroachDB Image Uploader Desk</h4>
+                          <h4 className="text-xs font-black text-zinc-800">Neon DB Image Uploader Desk</h4>
                           <p className="text-[10px] text-zinc-400 font-semibold mt-1">
-                            Your image file will be fully optimized, translated directly to a Base64 string, and written inside your secure CockroachDB database. 100% cloudless storage!
+                            Your image file will be fully optimized, translated directly to a Base64 string, and written inside your secure Neon DB database. 100% cloudless storage!
                           </p>
                         </div>
                         

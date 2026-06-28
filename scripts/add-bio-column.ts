@@ -13,7 +13,7 @@ const pool = new Pool({
 });
 
 async function main() {
-  console.log("Connecting to CockroachDB to add user bio column...");
+  console.log("Connecting to Neon DB to add user bio column...");
   const client = await pool.connect();
   try {
     // Alter table "user" to add a "bio" column if it doesn't exist

@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-CockroachDB and Better Auth are prewired through `DATABASE_URL`, `BETTER_AUTH_URL`, and `BETTER_AUTH_SECRET` in `.env`.
+Neon DB and Better Auth are prewired through `DATABASE_URL`, `BETTER_AUTH_URL`, and `BETTER_AUTH_SECRET` in `.env`.
 
 Run the auth migration once after setting `DATABASE_URL`:
 

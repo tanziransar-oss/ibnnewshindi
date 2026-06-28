@@ -13,7 +13,7 @@ const pool = new Pool({
 });
 
 async function main() {
-  console.log("Connecting to CockroachDB to create the video table...");
+  console.log("Connecting to Neon DB to create the video table...");
   const client = await pool.connect();
   try {
     // Create video table
@@ -28,7 +28,7 @@ async function main() {
         views INT NOT NULL DEFAULT 0
       );
     `);
-    console.log("Successfully created the video table in CockroachDB!");
+    console.log("Successfully created the video table in Neon DB!");
     
     // Seed initial mock video if table is empty
     const countRes = await client.query('SELECT COUNT(*) FROM video');

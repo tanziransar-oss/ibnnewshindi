@@ -13,7 +13,7 @@ const pool = new Pool({
 });
 
 async function main() {
-  console.log("Connecting to CockroachDB to apply new features schema migration...");
+  console.log("Connecting to Neon DB to apply new features schema migration...");
   const client = await pool.connect();
   try {
     // 1. Add correspondent to article table
@@ -31,7 +31,7 @@ async function main() {
     console.log("Successfully added 'trendingTopics' column.");
 
   } catch (err) {
-    console.error("Error running CockroachDB database migration:", err);
+    console.error("Error running Neon DB database migration:", err);
   } finally {
     client.release();
   }

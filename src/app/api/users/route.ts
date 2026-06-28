@@ -56,7 +56,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json(formatted);
   } catch (err) {
-    console.error("Error fetching users from CockroachDB:", err);
+    console.error("Error fetching users from Neon DB:", err);
     return NextResponse.json({ error: "Failed to load users" }, { status: 500 });
   }
 }
@@ -86,7 +86,7 @@ export async function PATCH(request: Request) {
 
     return NextResponse.json({ success: true, id, role });
   } catch (err) {
-    console.error("Error updating user role in CockroachDB:", err);
+    console.error("Error updating user role in Neon DB:", err);
     return NextResponse.json({ error: "Failed to update user role" }, { status: 500 });
   }
 }

@@ -580,8 +580,8 @@ export default function AdminPage() {
 
         const uploadedItem = await res.json();
         addMediaItem(uploadedItem, true);
-        addAuditLog(`File successfully uploaded directly to CockroachDB: ${file.name}`);
-        alert(`Successfully uploaded "${file.name}" to CockroachDB!`);
+        addAuditLog(`File successfully uploaded directly to Neon DB: ${file.name}`);
+        alert(`Successfully uploaded "${file.name}" to Neon DB!`);
       } catch (err) {
         console.error("Upload failed, falling back to mock files:", err);
         const mockFiles = [
@@ -589,7 +589,7 @@ export default function AdminPage() {
         ];
         mockFiles.forEach(f => addMediaItem(f));
         addAuditLog("Simulated fallback media seeding");
-        alert("CockroachDB connection issue. Seeding high-quality placeholder media instead!");
+        alert("Neon DB connection issue. Seeding high-quality placeholder media instead!");
       }
     };
     fileInput.click();
@@ -620,11 +620,11 @@ export default function AdminPage() {
         const uploadedItem = await res.json();
         addMediaItem(uploadedItem, true);
         setEditorFeaturedImage(uploadedItem.url);
-        addAuditLog(`Article image successfully uploaded directly to CockroachDB: ${file.name}`);
+        addAuditLog(`Article image successfully uploaded directly to Neon DB: ${file.name}`);
         alert("Featured image successfully uploaded and selected!");
       } catch (err) {
         console.error("Upload failed:", err);
-        alert("Failed to upload image to CockroachDB.");
+        alert("Failed to upload image to Neon DB.");
       }
     };
     fileInput.click();
@@ -786,7 +786,7 @@ export default function AdminPage() {
             <div className="h-4 w-px bg-zinc-200 hidden md:block" />
             <div className="hidden md:flex items-center gap-1.5">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-5xs font-black uppercase text-zinc-400 tracking-wider">CockroachDB Connected</span>
+              <span className="text-5xs font-black uppercase text-zinc-400 tracking-wider">Neon DB Connected</span>
             </div>
           </div>
 
@@ -1206,7 +1206,7 @@ export default function AdminPage() {
                   <div className="rounded-[20px] border border-zinc-200 bg-zinc-50/70 p-4 flex flex-col justify-between">
                     <div>
                       <span className="text-[9px] font-black uppercase tracking-wider text-zinc-400">Database Engine</span>
-                      <h4 className="text-[11px] font-black text-zinc-800 mt-0.5">CockroachDB health</h4>
+                      <h4 className="text-[11px] font-black text-zinc-800 mt-0.5">Neon DB health</h4>
                       
                       <div className="mt-5 space-y-3">
                         <div className="flex items-center justify-between border-b border-zinc-100 pb-2">
@@ -2267,8 +2267,8 @@ export default function AdminPage() {
                 <div className="flex items-center justify-between border-b border-zinc-150 pb-3">
                   <div>
                     <span className="text-[10px] font-black uppercase tracking-wider text-zinc-400">Storage Desk</span>
-                    <h2 className="text-xs font-black text-zinc-950 mt-0.5">Media Library & Storage Vault (CockroachDB-Only)</h2>
-                    <p className="text-5xs font-semibold text-zinc-400 mt-1">Upload and store images directly inside CockroachDB as inline Base64 strings. No credit cards required.</p>
+                    <h2 className="text-xs font-black text-zinc-950 mt-0.5">Media Library & Storage Vault (Neon DB-Only)</h2>
+                    <p className="text-5xs font-semibold text-zinc-400 mt-1">Upload and store images directly inside Neon DB as inline Base64 strings. No credit cards required.</p>
                   </div>
                   <button
                     onClick={handleSimulateDragDrop}
@@ -2373,7 +2373,7 @@ export default function AdminPage() {
                             onClick={() => {
                               setIsCropSaved(true);
                               addAuditLog(`Re-compressed database image record "${selectedMediaItem.name}" to ${compressSimPercent}%`);
-                              alert("Asset successfully compressed and saved in CockroachDB!");
+                              alert("Asset successfully compressed and saved in Neon DB!");
                             }}
                             className="flex-1 rounded-full bg-[var(--apple-blue)] py-2 text-3xs font-black text-white hover:bg-[var(--apple-blue-hover)] transition-all uppercase tracking-widest cursor-pointer"
                           >
@@ -3089,7 +3089,7 @@ export default function AdminPage() {
                     
                     {settingsSuccess && (
                       <span className="text-5xs font-black text-emerald-600 bg-emerald-50 px-4 py-2 rounded-lg border border-emerald-100 uppercase tracking-wider">
-                        Settings synchronized successfully with CockroachDB!
+                        Settings synchronized successfully with Neon DB!
                       </span>
                     )}
                   </div>
@@ -3145,7 +3145,7 @@ export default function AdminPage() {
                 <div>
                   <span className="text-[10px] font-black uppercase tracking-wider text-zinc-400">Purging Desk</span>
                   <h2 className="text-xs font-black text-zinc-950 mt-0.5">Recycle & Soft Deleted Bulletins Bin</h2>
-                  <p className="text-5xs font-semibold text-zinc-400 mt-1">Restore soft-deleted bulletins back to life, or permanently erase them from CockroachDB storage registers.</p>
+                  <p className="text-5xs font-semibold text-zinc-400 mt-1">Restore soft-deleted bulletins back to life, or permanently erase them from Neon DB storage registers.</p>
                 </div>
 
                 <div className="rounded-[24px] border border-zinc-200 bg-white shadow-sm overflow-hidden">
@@ -3191,10 +3191,10 @@ export default function AdminPage() {
                                 </button>
                                 <button
                                   onClick={() => {
-                                    if (confirm("WARNING: Permanently erase this news bulletin from CockroachDB tables? This action is irreversible.")) {
+                                    if (confirm("WARNING: Permanently erase this news bulletin from Neon DB tables? This action is irreversible.")) {
                                       hardDeleteArticle(art.id);
                                       addAuditLog(`PERMANENTLY PURGED article from tables: "${art.titleHindi.slice(0, 30)}..."`);
-                                      alert("Article permanently erased from CockroachDB!");
+                                      alert("Article permanently erased from Neon DB!");
                                     }
                                   }}
                                   className="text-white bg-[var(--news-red)] hover:bg-[var(--news-red-hover)] font-black uppercase tracking-wider text-5xs px-2.5 py-1 rounded-lg cursor-pointer animate-pulse"

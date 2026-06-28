@@ -30,7 +30,7 @@ export async function GET() {
       },
     });
   } catch (err) {
-    console.error("Error fetching articles from CockroachDB:", err);
+    console.error("Error fetching articles from Neon DB:", err);
     return NextResponse.json({ error: "Failed to load database articles" }, { status: 500 });
   }
 }
@@ -83,7 +83,7 @@ export async function POST(request: Request) {
       expiryDate: newArt.expiryDate ? newArt.expiryDate.toISOString() : undefined,
     });
   } catch (err) {
-    console.error("Error inserting article into CockroachDB:", err);
+    console.error("Error inserting article into Neon DB:", err);
     return NextResponse.json({ error: "Failed to publish article" }, { status: 500 });
   }
 }

@@ -126,7 +126,7 @@ export async function DELETE(request: Request) {
     await db.deleteFrom("video").where("id", "=", id).execute();
     return NextResponse.json({ success: true, id });
   } catch (err) {
-    console.error("Error deleting YouTube video from CockroachDB:", err);
+    console.error("Error deleting YouTube video from Neon DB:", err);
     return NextResponse.json({ error: "Failed to delete video record" }, { status: 500 });
   }
 }

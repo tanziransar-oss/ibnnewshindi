@@ -49,7 +49,7 @@ export async function PUT(
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error("Error updating article in CockroachDB:", err);
+    console.error("Error updating article in Neon DB:", err);
     return NextResponse.json({ error: "Failed to update article" }, { status: 500 });
   }
 }
@@ -79,7 +79,7 @@ export async function DELETE(
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error("Error deleting article in CockroachDB:", err);
+    console.error("Error deleting article in Neon DB:", err);
     return NextResponse.json({ error: "Failed to delete article" }, { status: 500 });
   }
 }

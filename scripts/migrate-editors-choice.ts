@@ -13,7 +13,7 @@ const pool = new Pool({
 });
 
 async function main() {
-  console.log("Connecting to CockroachDB to apply Editor's Choice column migration...");
+  console.log("Connecting to Neon DB to apply Editor's Choice column migration...");
   const client = await pool.connect();
   try {
     console.log("Adding column 'isEditorsChoice' to table 'article'...");
