@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #fbfbfd;
+    --foreground: #1d1d1f;
+    --card-bg: #ffffff;
+    
+    --news-red: #d6001c;
+    --news-red-hover: #b80018;
+    --apple-blue: #003366; /* Elegant Dark Royal Blue Accents */
+    --apple-blue-hover: #002244;
+    
+    --border-color: #e5e5e7;
+    --gray-bg: #f5f5f7;
+    --gray-text: #86868b;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+/* Custom Scrollbar for Premium Feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d1d6;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Premium Marquee */
+@keyframes marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 25s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Apple-style Premium Borders & Shadows */
+.apple-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e7;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+.apple-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.apple-border {
+  border: 1px solid #e5e5e7;
+}
+
+/* Accent Buttons */
+.btn-primary {
+  background-color: var(--apple-blue);
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 980px;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  background-color: var(--apple-blue-hover);
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--apple-blue);
+  font-weight: 700;
+  border: 1px solid var(--border-color);
+  border-radius: 980px;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  background-color: var(--gray-bg);
+  border-color: var(--apple-blue);
+}
+
+.title-font {
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Custom ContentEditable Visual Editor Placeholder */
+[contenteditable]:empty:before {
+  content: attr(data-placeholder);
+  color: #a1a1aa;
+  pointer-events: none;
+  display: block;
+}

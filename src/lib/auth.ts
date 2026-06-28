@@ -1,0 +1,38 @@
+import { betterAuth } from "better-auth";
+import { db } from "@/lib/db";
+import { normalizeRole } from "@/lib/roles";
+
+const isProd = process.env.NODE_ENV === "production";
+const baseURL = isProd ? "https://ibnnewshindi.in" : (process.env.BETTER_AUTH_URL ?? "http://localhost:3000");
+const secret = process.env.BETTER_AUTH_SECRET;
+
+if (!secret) {
+  throw new Error("BETTER_AUTH_SECRET is missing. Add it to .env before starting the server.");
+}
+
+export const auth = betterAuth({
+  baseURL,
+  secret,
+  database: {
+    db,
+    type: "postgres",
+  },
+  session: {
+    expiresIn: 60 * 60 * 24 * 30, // 30 days session persistence (remains logged in)
+    updateAge: 60 * 60 * 24,     // 1 day update threshold
+  },
+  socialProviders: {
+    google: {
+      clientId: (process.env.GOOGLE_CLIENT_ID || "GOOGLE_CLIENT_ID_PLACEHOLDER") as string,
+      clientSecret: (process.env.GOOGLE_CLIENT_SECRET || "GOOGLE_CLIENT_SECRET_PLACEHOLDER") as string,
+    },
+  },
+  user: {
+    additionalFields: {
+      role: {
+        type: "string",
+        defaultValue: normalizeRole("User"),
+      },
+    },
+  },
+});

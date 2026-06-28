@@ -1,0 +1,47 @@
+{
+  "name": "ibnnewshindi",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "db:migrate": "bun scripts/migrate-auth.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1053.0",
+    "@google-cloud/storage": "^7.19.0",
+    "@neondatabase/serverless": "^1.1.0",
+    "@types/pg": "^8.20.0",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
+    "better-auth": "^1.6.11",
+    "dompurify": "^3.4.5",
+    "kysely": "^0.29.2",
+    "kysely-neon": "^3.0.0",
+    "next": "16.2.6",
+    "pg": "^8.21.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "ignoreScripts": [
+    "sharp",
+    "unrs-resolver"
+  ],
+  "trustedDependencies": [
+    "sharp",
+    "unrs-resolver"
+  ]
+}
